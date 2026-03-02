@@ -59,6 +59,8 @@ class LoginRequest extends FormRequest
      */
     public function ensureIsNotRateLimited(): void
     {
+        // pertemuan 2: rate limit
+        // batas gagal login 5 kali dalam satu menit
         if (! RateLimiter::tooManyAttempts($this->throttleKey(), 5)) {
             return;
         }
